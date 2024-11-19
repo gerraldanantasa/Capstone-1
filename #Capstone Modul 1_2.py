@@ -366,21 +366,13 @@ def filter_movie(chosen_list=list_film):
             if filter_key == 'genre':
                 # Check if any genre in each film matches the filter value
                 filtered_films = [
-                    [
-                        idx + 1, film['film'], ', '.join(film['genre']), film['country'], 
-                        film['toteps'], film['epswatched'], film['status']
-                    ] 
-                    for idx, film in enumerate(chosen_list) 
-                    if filter_value in film['genre']
+                    [idx + 1, film['film'], ', '.join(film['genre']), film['country'],  film['toteps'], film['epswatched'], film['status']] 
+                    for idx, film in enumerate(chosen_list) if filter_value in film['genre']
                 ]
             else:
                 filtered_films = [
-                    [
-                        idx + 1, film['film'], ', '.join(film['genre']), film['country'], 
-                        film['toteps'], film['epswatched'], film['status']
-                    ] 
-                    for idx, film in enumerate(chosen_list) 
-                    if film[filter_key].lower() == filter_value.lower()
+                    [idx + 1, film['film'], ', '.join(film['genre']), film['country'], film['toteps'], film['epswatched'], film['status']] 
+                    for idx, film in enumerate(chosen_list)  if film[filter_key].lower() == filter_value.lower()
                 ]
             
             
