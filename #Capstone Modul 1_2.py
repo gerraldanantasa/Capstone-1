@@ -215,11 +215,13 @@ def add():
                             # Update selected film/show
                             selected_film = list_film[index]
                             new_epswatched = int(input(f"Enter the number of the recent episode (current: {selected_film['epswatched']}/{selected_film['toteps']}): "))
-                            selected_film['epswatched'] = new_epswatched 
+                            
                             status_update = input(f"Enter the new status (current: {selected_film['status']}): ").title().strip()
-                            selected_film['status'] = status_update
+                            
 
                             if confirm():
+                                selected_film['epswatched'] = new_epswatched 
+                                selected_film['status'] = status_update
                                 print(f"\n'{selected_film['film']}' has been updated.")
                             main()
 
