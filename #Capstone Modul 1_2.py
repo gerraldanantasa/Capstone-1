@@ -39,7 +39,10 @@ def main():
 
 
 
-
+def display_value(key, headers):
+    film_genre = sorted([[idx + 1, film['film'],  film[key] if key != 'genre' else ','.join(film['genre'])]for idx, film in enumerate(list_film)], key=lambda x: x[2])                
+    print('Watch list by genre:')
+    print(tabulate(film_genre, headers=headers, tablefmt="simple"))
 
 
 # Display menu
@@ -67,21 +70,24 @@ def display():
             elif menu1 == 2:
               
                 #Display by genre 
-                film_genre = sorted([[idx + 1, film['film'], ','.join(film['genre'])]for idx, film in enumerate(list_film)], key=lambda x: x[2])                
-                print('Watch list by genre:')
-                print(tabulate(film_genre, headers=headers_genre, tablefmt="simple"))
+                display_value('genre', headers_genre)
+                # film_genre = sorted([[idx + 1, film['film'], ','.join(film['genre'])]for idx, film in enumerate(list_film)], key=lambda x: x[2])                
+                # print('Watch list by genre:')
+                # print(tabulate(film_genre, headers=headers_genre, tablefmt="simple"))
 
             elif menu1 == 3:
                 #Display by country 
-                film_country = sorted([[idx + 1, film['film'], film['country']] for idx, film in enumerate(list_film)], key=lambda x: x[2])
-                print('Watch list by country:')
-                print(tabulate(film_country, headers=headers_country, tablefmt="simple"))
+                display_value('country', headers_country)
+                # film_country = sorted([[idx + 1, film['film'], film['country']] for idx, film in enumerate(list_film)], key=lambda x: x[2])
+                # print('Watch list by country:')
+                # print(tabulate(film_country, headers=headers_country, tablefmt="simple"))
 
             elif menu1 == 4:
                 # Display by status
-                film_status = sorted([[idx + 1, film['film'], film['status']] for idx, film in enumerate(list_film)], key=lambda x: x[2])
-                print('Watch list by status:')
-                print(tabulate(film_status, headers=headers_status, tablefmt="simple"))
+                display_value('status', headers_status)
+                # film_status = sorted([[idx + 1, film['film'], film['status']] for idx, film in enumerate(list_film)], key=lambda x: x[2])
+                # print('Watch list by status:')
+                # print(tabulate(film_status, headers=headers_status, tablefmt="simple"))
 
             elif menu1 == 5:
                 favorite()
@@ -240,58 +246,6 @@ def add():
 
         print()
 
-def display():
-    os.system('cls')
-    while True:
-        
-        print()
-        print("Display Menu")
-        print("1. Show all films")
-        print("2. Show by genre")
-        print("3. Show by country")
-        print("4. Show by status")
-        print("5. Show favorite list")
-        print("6. Back to main menu")
-        
-        try:
-            menu1 = int(input("Choose a menu: "))
-            print()
-
-            if menu1 == 1:
-                
-                #Use pre-sorted list for consistent display 
-                main()
-
-            elif menu1 == 2:
-              
-                #Display by genre 
-                film_genre = sorted([[idx + 1, film['film'], ','.join(film['genre']) if isinstance(film['genre'], list) else film['genre']] for idx, film in enumerate(list_film)], key=lambda x: x[2])                
-                print('Watch list by genre:')
-                print(tabulate(film_genre, headers=headers_genre, tablefmt="simple"))
-
-            elif menu1 == 3:
-                #Display by country 
-                film_country = sorted([[idx + 1, film['film'], film['country']] for idx, film in enumerate(list_film)], key=lambda x: x[2])
-                print('Watch list by country:')
-                print(tabulate(film_country, headers=headers_country, tablefmt="simple"))
-
-            elif menu1 == 4:
-                # Display by status
-                film_status = sorted([[idx + 1, film['film'], film['status']] for idx, film in enumerate(list_film)], key=lambda x: x[2])
-                print('Watch list by status:')
-                print(tabulate(film_status, headers=headers_status, tablefmt="simple"))
-
-            elif menu1 == 5:
-                favorite()
-
-            elif menu1==6:
-                break
-            else:
-                print('Menu is unavailable.')
-        except ValueError:
-            print("Please enter a valid number.")
-
-        print()
 
 def delete():
     os.system('cls')
@@ -346,12 +300,8 @@ def delete():
                                 print(f"\n'{removed_film['film']}' has been removed from the favorite list.")
                                 favorite()
 
-
                         else:
                             print("Invalid index. Please try again.")
-
-                        
-            
             
                     except ValueError:
                         print("Invalid input. Please enter a valid number.")
@@ -443,7 +393,7 @@ def filter_movie(chosen_list=list_film):
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
-def edit_function(edit_value, edit_idx, chosen_list=list_film):
+def edit(edit_value, edit_idx, chosen_list=list_film):
     selected_film = chosen_list[edit_idx]
 
     if edit_value == 'film':
@@ -550,7 +500,7 @@ def track_flix():
                     print("Available columns:")
                     print("film, genre, country, total episodes, episodes watched, status")
                     edit_value= input('Input the column you want to edit: ').lower().strip()
-                    edit_function(edit_value, edit_idx)
+                    edit(edit_value, edit_idx)
                 
                 except ValueError:
                     print("Please enter a valid option.")
