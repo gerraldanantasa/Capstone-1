@@ -122,7 +122,7 @@ def confirm():
             print("Invalid input. Please enter 'y' or 'n'.")
 
 
-
+# Add menu
 def add():
     while True:
         print()
@@ -246,7 +246,7 @@ def add():
 
         print()
 
-
+# Delete menu
 def delete():
     os.system('cls')
 
@@ -275,7 +275,7 @@ def delete():
                                 for idx, item in enumerate(favorite_list):
                                     if item["film"] == removed_film["film"]:
                                         favorite_list.pop(idx)
-                                        print(f"\n'{removed_film['film']}' has been removed from the favorite list.")
+                                        print(f"\n'{removed_film['film']}' has also been removed from the favorite list.")
                                         favorite()
                                     
                         else:
@@ -317,6 +317,7 @@ def delete():
             print("Please enter a valid number.")
         print()
 
+# Filter menu
 def filter_movie(chosen_list=list_film):
     os.system('cls')
 
@@ -393,6 +394,7 @@ def filter_movie(chosen_list=list_film):
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
+# edit menu
 def edit(edit_value, edit_idx, chosen_list=list_film):
     selected_film = chosen_list[edit_idx]
 
