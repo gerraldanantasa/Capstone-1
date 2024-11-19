@@ -429,14 +429,14 @@ def edit(edit_value, edit_idx, chosen_list=list_film):
     # Ask for the new value
     if column_name=='genre':
         new_value = input(f"Input the new {column_name} (current: {', '.join(current_value)}): ").strip().title().split(',')
-        selected_film['genre'] = new_value
         if confirm():
+            selected_film['genre'] = new_value
             print(f"{column_name.capitalize()} of '{selected_film['film']}' has been successfully changed to {','.join(new_value)}.")
             main()
     else:
         new_value = input(f"Input the new {column_name} (current: {current_value}): ").strip().title()
-        selected_film[column_name] = new_value
         if confirm():
+            selected_film[column_name] = new_value
             print(f"{column_name.capitalize()} of '{selected_film['film']}' has been successfully changed to {(new_value)}.")
             main()
      # Update if favorite list exist
