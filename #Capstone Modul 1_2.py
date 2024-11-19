@@ -147,7 +147,7 @@ def add():
                     print(f"\n'{film_input}' is already in the watch list.")
                 
                 else:
-                    genre = input("Enter the genre: ").title().split(',') # add multiple
+                    genre = sorted(input("Enter the genre: ").title().split(',')) # add multiple
                     country = input("Enter the country of origin: ").title()
                     toteps = int(input("Enter the total number of episodes: "))
                     epswatched = int(input("Enter the number of episodes watched: "))
