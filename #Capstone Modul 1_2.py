@@ -40,7 +40,8 @@ def main():
 
 
 def display_value(key, headers):
-    film_genre = sorted([[idx + 1, film['film'],  film[key] if key != 'genre' else ','.join(film['genre'])]for idx, film in enumerate(list_film)], key=lambda x: x[2])                
+    film_genre = sorted([[idx + 1, film['film'],  film[key] if key != 'genre' else ','.join(film['genre']), film['toteps'],film['epswatched']]
+                         for idx, film in enumerate(list_film)], key=lambda x: x[2])                
     print('Watch list by genre:')
     print(tabulate(film_genre, headers=headers, tablefmt="simple"))
 
