@@ -30,7 +30,7 @@ _Edit Menu_: Edit details of films/shows (e.g., title, genre, country, etc.).
 Clone the Repository
 Clone this repository to your local machine:
 
-git clone https://github.com/gerraldanantasa/TrackFlix.git
+git clone https://github.com/gerraldanantasa/Capstone-1.git
 
 
 **Install Dependencies**
