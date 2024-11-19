@@ -25,8 +25,8 @@ favorite_list = sorted([
 # Header definitions 
 headers_all = ["Index", "Film", "Genre", "Country", "Total Episodes", "Episodes Watched", "Status"]
 headers_search= ["Film", "Genre", "Country", "Total Episodes", "Episodes Watched", "Status"]
-headers_genre = ["Index", "Film", "Genre"]
-headers_country = ["Index", "Film", "Country"]
+headers_genre = ["Index", "Film", "Genre","Total Episodes", "Episodes Watched",]
+headers_country = ["Index", "Film", "Country","Total Episodes", "Episodes Watched",]
 headers_status = ["Index", "Film", "Total Episodes", "Episodes Watched", "Status"]
 def main():
     #Use pre-sorted list for consistent display 
