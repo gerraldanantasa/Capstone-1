@@ -434,13 +434,15 @@ def edit(edit_value, edit_idx, chosen_list=list_film):
             selected_film[column_name] = new_value
             print(f"{column_name.capitalize()} of '{selected_film['film']}' has been successfully changed to {(new_value)}.")
             main()
-     # Update if favorite list exist
-    if favorite_list:
-        for item in favorite_list:
-            if item["film"] == selected_film["film"]:
-                item[column_name] = new_value
-                break
-        favorite()
+            # Update if favorite list exist
+            if favorite_list:
+                for item in favorite_list:
+                    if item["film"] == selected_film["film"]:
+                        item[column_name] = new_value
+                    
+                favorite()
+     
+   
 
 
 def track_flix():
