@@ -18,7 +18,7 @@ list_film = sorted([
 # favorite list (sorted by film name if you have multiple entries)
 favorite_list = sorted([
     {'film': 'Inception', 'genre': ['Mystery', 'Sci-Fi', 'Thriller'], 'country': 'North America', 'toteps': 1, 'epswatched': 1, 'status': 'Finished'},
-    {'film': 'Breaking Bad', 'genre': ['Drama', 'Crime', 'Thriller'], 'country': 'North America', 'toteps': 62, 'epswatched': 62, 'status': 'Finished'},
+    {'film': 'Breaking Bad', 'genre': ['Drama'], 'country': 'North America', 'toteps': 62, 'epswatched': 62, 'status': 'Finished'},
     {'film': 'Dark', 'genre': ['Sci-Fi', 'Mystery', 'Thriller'], 'country': 'Germany', 'toteps': 26, 'epswatched': 13, 'status': 'Watching'}  
 ], key=lambda x: x['film'])
 
@@ -428,6 +428,12 @@ def edit(edit_value, edit_idx, chosen_list=list_film):
             selected_film['genre'] = new_value
             print(f"{column_name.capitalize()} of '{selected_film['film']}' has been successfully changed to {','.join(new_value)}.")
             main()
+            if favorite_list:
+                for item in favorite_list:
+                    if item["film"] == selected_film["film"]:
+                        item[column_name] = new_value
+                    
+                favorite()
     else:
         new_value = input(f"Input the new {column_name} (current: {current_value}): ").strip().title()
         if confirm():
